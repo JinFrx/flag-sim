@@ -1,0 +1,213 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://flag.gd" type="Script" id=1]
+[ext_resource path="res://gui.gd" type="Script" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+params_diffuse_mode = 1
+params_specular_mode = 1
+params_cull_mode = 2
+
+[sub_resource type="SpatialMaterial" id=2]
+params_diffuse_mode = 1
+params_specular_mode = 1
+albedo_color = Color( 0.564706, 0.564706, 0.564706, 1 )
+metallic = 0.3
+roughness = 0.65
+
+[sub_resource type="CylinderMesh" id=3]
+material = SubResource( 2 )
+radial_segments = 12
+
+[sub_resource type="SpatialMaterial" id=4]
+params_diffuse_mode = 1
+params_specular_mode = 1
+albedo_color = Color( 0.564706, 0.564706, 0.564706, 1 )
+metallic = 0.3
+roughness = 0.65
+
+[sub_resource type="SphereMesh" id=5]
+material = SubResource( 4 )
+
+[sub_resource type="Environment" id=6]
+background_mode = 1
+background_color = Color( 0, 0.176471, 0.294118, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0, 0, 0, 0.392157 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Flag" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 7.5, 0 )
+script = ExtResource( 1 )
+geometryPath = NodePath("Geometry")
+guiPath = NodePath("../GUI")
+NB_MASSES_W = 16
+NB_MASSES_H = 8
+M = 0.3
+K = 150.0
+D = 5.25
+
+[node name="Geometry" type="ImmediateGeometry" parent="Flag"]
+material_override = SubResource( 1 )
+
+[node name="Pole" type="MeshInstance" parent="."]
+transform = Transform( 0.1, 0, 0, 0, 15, 0, 0, 0, 0.1, -7, -7.25, 0 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Pole_Top" type="MeshInstance" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -7, 7.75, 0 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22 )
+environment = SubResource( 6 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+shadow_enabled = true
+
+[node name="GUI" type="CanvasLayer" parent="."]
+script = ExtResource( 2 )
+flagPath = NodePath("../Flag")
+
+[node name="Control" type="Control" parent="GUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nb_Masses_W_Label" type="Label" parent="GUI/Control"]
+margin_left = 9.77585
+margin_top = 9.54594
+margin_right = 92.7758
+margin_bottom = 23.5459
+custom_styles/normal = SubResource( 7 )
+text = "nb masses w"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Nb_Masses_H_Label" type="Label" parent="GUI/Control"]
+margin_left = 9.77585
+margin_top = 30.4603
+margin_right = 92.7758
+margin_bottom = 44.4603
+custom_styles/normal = SubResource( 7 )
+text = "nb masses h"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mass_Value_Label" type="Label" parent="GUI/Control"]
+margin_left = 9.77585
+margin_top = 50.1756
+margin_right = 92.7758
+margin_bottom = 64.1756
+custom_styles/normal = SubResource( 7 )
+text = "massValue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Strength_Cst_Label" type="Label" parent="GUI/Control"]
+margin_left = 9.77585
+margin_top = 70.0537
+margin_right = 92.7758
+margin_bottom = 84.0537
+custom_styles/normal = SubResource( 7 )
+text = "K"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Damping_Cst_Label" type="Label" parent="GUI/Control"]
+margin_left = 9.77585
+margin_top = 90.5668
+margin_right = 92.7758
+margin_bottom = 104.567
+custom_styles/normal = SubResource( 7 )
+text = "D"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Air_Drag_Coef_Label" type="Label" parent="GUI/Control"]
+margin_left = 9.77585
+margin_top = 111.643
+margin_right = 92.7758
+margin_bottom = 125.643
+custom_styles/normal = SubResource( 7 )
+text = "Cd"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lift_Coef_Label" type="Label" parent="GUI/Control"]
+margin_left = 9.77585
+margin_top = 133.868
+margin_right = 92.7758
+margin_bottom = 147.868
+rect_pivot_offset = Vector2( 99.4547, 14 )
+custom_styles/normal = SubResource( 7 )
+text = "Cl"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Wind_Label" type="Label" parent="GUI/Control"]
+margin_left = 9.77585
+margin_top = 154.9
+margin_right = 92.7758
+margin_bottom = 168.9
+rect_pivot_offset = Vector2( 99.4547, 14 )
+custom_styles/normal = SubResource( 7 )
+text = "wind"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TMax_Label" type="Label" parent="GUI/Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -115.88
+margin_top = 9.54594
+margin_right = -32.8804
+margin_bottom = 23.5459
+rect_pivot_offset = Vector2( 99.4547, 14 )
+custom_styles/normal = SubResource( 7 )
+text = "tMax"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Time_Step_Label" type="Label" parent="GUI/Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -115.88
+margin_top = 30.4603
+margin_right = -32.8804
+margin_bottom = 44.4603
+rect_pivot_offset = Vector2( 29.2412, 13.3742 )
+custom_styles/normal = SubResource( 7 )
+text = "timeStep"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TSimul_Label" type="Label" parent="GUI/Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -115.88
+margin_top = 51.2267
+margin_right = -32.8804
+margin_bottom = 65.2267
+rect_pivot_offset = Vector2( 29.2412, 13.3742 )
+custom_styles/normal = SubResource( 7 )
+text = "tSimul"
+__meta__ = {
+"_edit_use_anchors_": false
+}
