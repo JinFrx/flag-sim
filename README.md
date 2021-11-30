@@ -14,6 +14,6 @@ Code is located in flag.gd.
 
 This application allows the user to have interactions with the simulation by pressing some keys:
 - Press I to hide or show simulation parameters information
-- Press M (AZERTY keyboard) to change the render mode (POINTS, LINES, FACES)
+- Press M (AZERTY keyboard) to change the rendering mode (POINTS, LINES, FACES)
 - Press T to change the texture of the flag
 - Press Spacebar to randomly change the velocity of the wind
