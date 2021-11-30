@@ -1,4 +1,4 @@
-# Simulation d'un drapeau sous l'action du vent avec un système masse-ressort
+# Flag simulation with wind action using spring-mass system
 
 <!--
 <p align=center>
