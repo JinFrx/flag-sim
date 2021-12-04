@@ -9,7 +9,9 @@
 ## Description
 
 Simulation of a flag made with Godot Engine, for a university project purpose (2021).
+
 The flag is modelised with a spring-damper-mass system.
+
 The action of wind on the flag is modelised by computing wind and air forces that act on the mesh faces.
 
 Code is located in flag.gd.
