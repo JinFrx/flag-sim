@@ -8,7 +8,7 @@
 
 ## Description
 
-Simulation of a flag made with Godot Engine, for a university project purpose (2021).
+A simulation of a flag made with Godot Engine, as part of a university project  (2021).
 
 The flag is modelised with a spring-damper-mass system.
 
