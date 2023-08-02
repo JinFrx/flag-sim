@@ -38,7 +38,7 @@ This application allows the user to interact with the simulation by pressing som
 - Press **T** to change the texture of the flag
 - Press **Spacebar** to randomly change the velocity of the wind (direction and power)
 
-/!\ WARNING /!\
+:warning: WARNING :warning:
 
 Unfortunately, I'm French! ... well I would rather say "Unfortunately, I'm using an AZERTY keyboard".
 I guess Godot does automatically the connection between all layouts, but be aware of that if it isn't the case (specially for the M key).
