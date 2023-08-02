@@ -1,7 +1,7 @@
 # Flag simulation with wind action using spring-damper-mass system
 
 <p align=center>
-  <img src="https://github.com/JinFrx/pf-flag-sim/blob/main/simulation_drapeau.gif" alt="showcase image" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+  <img src="https://github.com/JinFrx/flag-sim/blob/main/simulation_drapeau.gif" alt="showcase image" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
 </p>
 
 ## Description
